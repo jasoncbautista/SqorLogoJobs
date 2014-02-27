@@ -1,0 +1,92 @@
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+<style>
+
+.logos{
+    margin: 100px;
+    position: absolute;
+}
+.logo{
+    top: 100px;
+    left: 100px;
+
+}
+.logo2{
+    -webkit-transform: rotateZ(80deg); /* Chrome, Safari, Opera */
+    transform: rotateZ(180deg);
+
+    top: 150px;
+    left: 250px;
+
+    display: none;
+}
+
+</style>
+
+<body>
+ <img src="logoClean.png" class='logo logos'/>
+
+ <img src="logoClean.png" class='logo2 logos'/>
+</body>
+
+<script>
+
+$(document).ready(function(){
+
+        var rotateZ  = function( deg){
+            deg = 180 - deg;
+            $(".logo").css({
+                "-webkit-transform": "rotateZ("+ deg +"deg)"
+            });
+            
+        };
+        var rotate  = function(xdeg, ydeg, zdeg, top, left, className){
+            zdeg = 180 - zdeg;
+            $(className).css({
+                "left": left + "px",
+                "top": top+ "px",
+                "-webkit-transform":  "rotateX(" +xdeg + "deg) rotateZ("+ zdeg +"deg)"
+            });
+
+
+        };
+
+
+        $(document.body).mousemove(function(ee){
+            var screenWidth = $(window).width();
+            var x = ee.pageX;
+
+            var zDegreesMax= 180;
+            var denominator  = screenWidth;
+            var ratio = (x/denominator);
+            var ZDegrees = Math.floor(ratio * zDegreesMax);
+
+            
+            var xRotation = functionRotateX(ee);
+            rotate(xRotation, 0, ZDegrees -180, 100 + ZDegrees, 100 + xRotation,".logo");
+            //$(".logo2").show();
+            //rotate(xRotation, 0, ZDegrees , 150, 250 - xRotation/2,".logo2");
+            //rotateZ(ZDegrees);
+            
+        });
+
+        // Function to rate ALONG x axis
+        var functionRotateX = function(ee){
+            var screenWidth = $(window).width();
+            var x = ee.pageX;
+
+            var xDegreesMax= 360;
+            var denominator  = screenWidth;
+            var ratio = (x/denominator);
+            var xDegrees = Math.floor(ratio * xDegreesMax);
+            return xDegrees;
+        };
+
+
+
+
+});
+
+</script>
