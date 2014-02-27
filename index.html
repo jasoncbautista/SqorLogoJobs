@@ -29,7 +29,7 @@
  <img src="logoClean.png" class='logo logos'/>
 
  <img src="logoClean.png" class='logo2 logos'/>
- Hint: Turn your head upside down, or just move your mouse around the screen (touch works too).
+ Hint: Turn your head upside down, or just move your mouse around the screen (touch works too :-).
 </body>
 
 
@@ -104,7 +104,7 @@ $(document).ready(function(){
 
         $(document.body).bind("touchmove", function(e){
                 e.preventDefault(); 
-            var screenWidth = $(window).width();
+            var screenWidth = $(window).width() - 50;
             var ee = pointerEventToXY(e);
             var x = ee.pageX;
 
@@ -125,7 +125,7 @@ $(document).ready(function(){
 
         // Function to rate ALONG x axis
         var functionRotateX2 = function(ee){
-            var screenWidth = $(window).width();
+            var screenWidth = $(window).width() - 50 ;
             var x = ee.pageX;
 
             var xDegreesMax= 360;
