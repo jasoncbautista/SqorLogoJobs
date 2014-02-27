@@ -29,7 +29,7 @@
  <img src="logoClean.png" class='logo logos'/>
 
  <img src="logoClean.png" class='logo2 logos'/>
- Hint: Turn your head upside down, or just move your mouse around the screen.
+ Hint: Turn your head upside down, or just move your mouse around the screen (touch works too).
 </body>
 
 
@@ -103,6 +103,7 @@ $(document).ready(function(){
         };
 
         $(document.body).bind("touchmove", function(e){
+                e.preventDefault(); 
             var screenWidth = $(window).width();
             var ee = pointerEventToXY(e);
             var x = ee.pageX;
