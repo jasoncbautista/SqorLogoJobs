@@ -29,7 +29,7 @@
  <img src="logoClean.png" class='logo logos'/>
 
  <img src="logoClean.png" class='logo2 logos'/>
- Hint: Turn your head upside down. Or just move your mouse around the screen.
+ Hint: Turn your head upside down, or just move your mouse around the screen.
 </body>
 
 
@@ -87,6 +87,56 @@ $(document).ready(function(){
             var xDegrees = Math.floor(ratio * xDegreesMax);
             return xDegrees;
         };
+
+
+        var pointerEventToXY = function(e){
+            var out = {x:0, y:0};
+            if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
+                var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+                out.pageX = touch.pageX;
+                out.pageY = touch.pageY;
+            } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
+                out.pageX = e.pageX;
+                out.pageY = e.pageY;
+            }
+            return out;
+        };
+
+        $(document.body).bind("touchmove", function(e){
+            var screenWidth = $(window).width();
+            var ee = pointerEventToXY(e);
+            var x = ee.pageX;
+
+            var zDegreesMax= 180;
+            var denominator  = screenWidth;
+            var ratio = (x/denominator);
+            var ZDegrees = Math.floor(ratio * zDegreesMax);
+
+            
+            var xRotation = functionRotateX2(ee);
+            //rotate(xRotation, 0, ZDegrees -180,  50 + xRotation, 100, ".logo");
+            rotate(xRotation, 0, ZDegrees -180, 100 , 50 + xRotation,".logo");
+            //$(".logo2").show();
+            //rotate(xRotation, 0, ZDegrees , 150, 250 - xRotation/2,".logo2");
+            //rotateZ(ZDegrees);
+            
+        });
+
+        // Function to rate ALONG x axis
+        var functionRotateX2 = function(ee){
+            var screenWidth = $(window).width();
+            var x = ee.pageX;
+
+            var xDegreesMax= 360;
+            var denominator  = screenWidth;
+            var ratio = (x/denominator);
+            var xDegrees = Math.floor(ratio * xDegreesMax);
+            return xDegrees;
+        };
+
+
+
+
 
 
 
