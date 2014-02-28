@@ -11,5 +11,4 @@ A super simple CSS3 set of image transforms to prototype the jobs page "fun widg
 A live verison can be seen here:
 
 
-[http://jasoncbautista.github.io/SqorLogoJobs]
-
+http://jasoncbautista.github.io/SqorLogoJobs
